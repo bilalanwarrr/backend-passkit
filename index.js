@@ -15,7 +15,7 @@ const authRoutes = require("./src/routes/authRoutes");
 const verifyToken = require("./utils/verifyToken");
 
 const corsOptions = {
-  origin: "http://3.145.142.210/",
+  origin: "https://smartchecks.app/",
   optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
