@@ -21,9 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  console.log("origin: ",req.headers.origin)
+  res.header("Access-Control-Allow-Origin", ["https://smartchecks.app", "http://localhost:5173", "http://localhost:4173", "*"]);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+  console.log("headers: ", res.headers)
   if (req.method === "OPTIONS") {
     return res.status(200).json({});
   }
