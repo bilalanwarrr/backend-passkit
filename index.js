@@ -17,8 +17,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb' })); // Adjust the limit as needed
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use((req, res, next) => {
   const allowedOrigins = ["https://smartchecks.app", "http://localhost:5173", "http://localhost:4173"];
