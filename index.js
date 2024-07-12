@@ -40,6 +40,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  req.setTimeout(10 * 60 * 1000); // 10 minutes
+  next();
+});
+
 // Routes
 app.use("/api/passkit", passkitRoutes);
 app.use("/api/pass", passRoutes);
