@@ -17,11 +17,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(bodyParser.json({ limit: '50mb' })); // Adjust the limit as needed
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({ limit: "50mb" })); // Adjust the limit as needed
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 app.use((req, res, next) => {
-  const allowedOrigins = ["https://smartchecks.app", "http://localhost:5173", "http://localhost:4173"];
+  const allowedOrigins = [
+    "https://smartchecks.app",
+    "http://localhost:5173",
+    "http://localhost:4173",
+  ];
   const origin = req.headers.origin;
 
   if (allowedOrigins.includes(origin)) {
@@ -30,8 +34,14 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
   }
 
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.setHeader("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "PUT, POST, PATCH, DELETE, GET, OPTIONS"
+  );
 
   if (req.method === "OPTIONS") {
     return res.status(200).json({});
