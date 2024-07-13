@@ -29,7 +29,6 @@ async function getListOfCampaigns(req, res) {
       responseType: "stream",
     });
 
-    console.log("hello");
 
     let campaigns = {};
 

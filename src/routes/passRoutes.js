@@ -44,7 +44,6 @@ router.post("/jobStatus", async (req, res) => {
 
   try {
     const job = await jobQueue.getJob(jobId);
-    console.log("Job:", job);
 
     if (!job) {
       return res.status(404).send("Job not found");
