@@ -174,8 +174,7 @@ jobQueue.process(async (job, done) => {
             }
           );
 
-          coupons[`Coupon ${padToTwoDigits(skuIndex)}`] =
-            couponResponse.data.id;
+          coupons[`Coupon ${padToTwoDigits(skuIndex)}`] = sku;
           passes[
             `Pass ${padToTwoDigits(skuIndex)}`
           ] = `https://pub2.pskt.io/${couponResponse.data.id}`;
