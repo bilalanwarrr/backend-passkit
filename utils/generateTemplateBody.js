@@ -29,7 +29,7 @@ const generateTemplateBody = ({
           templateId: "",
           fieldType: "PROTOCOL_FIELDS",
           isRequired: false,
-          label: "Short Label",
+          label: "",
           localizedLabel: null,
           dataType: "TEXT",
           defaultValue: "",
@@ -121,12 +121,13 @@ const generateTemplateBody = ({
           },
           defaultTelCountryCode: "",
         },
+
         {
           uniqueName: "singleUseCoupons.couponOffer.offerTitle",
           templateId: "",
           fieldType: "PROTOCOL_FIELDS",
           isRequired: false,
-          label: "Title",
+          label: "",
           localizedLabel: null,
           dataType: "TEXT",
           defaultValue: "",
@@ -218,6 +219,7 @@ const generateTemplateBody = ({
           },
           defaultTelCountryCode: "",
         },
+
         {
           uniqueName: "custom.website",
           templateId: "",
@@ -266,6 +268,7 @@ const generateTemplateBody = ({
           },
           defaultTelCountryCode: "",
         },
+
         {
           uniqueName: "custom.phone",
           templateId: "",
@@ -314,6 +317,7 @@ const generateTemplateBody = ({
           },
           defaultTelCountryCode: "",
         },
+
         {
           uniqueName: "custom.vip",
           templateId: "",

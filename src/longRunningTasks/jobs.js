@@ -8,6 +8,8 @@ const { createToken } = require("../../utils/createToken");
 const { padToTwoDigits } = require("../../utils/padToTwoDigits");
 const writeDataToCsv = require("../../utils/witeDataToCSV");
 const config = require("../../config");
+const { get } = require("http");
+const { getCampaignName } = require("../controllers/campaignController");
 
 const jobQueue = new Queue("jobQueue", {
   limiter: {
@@ -54,6 +56,7 @@ const transporter = nodemailer.createTransport({
 // Process jobs in the queue
 jobQueue.process(async (job, done) => {
   const { campaignId, beforeRedeemPassTemplateId, files, userEmail } = job.data;
+  const campaignName = await getCampaignName(campaignId);
 
   try {
     const results = {};
@@ -211,11 +214,11 @@ jobQueue.process(async (job, done) => {
     const mailOptions = {
       from: process.env.EMAIL,
       to: userEmail,
-      subject: "Your CSV file is ready",
+      subject: `Your CSV file of coupons for campaign ${campaignName} is ready`,
       text: "Please find the attached CSV file.",
       attachments: [
         {
-          filename: "output.csv",
+          filename: `${campaignName}_coupons.csv`,
           path: outputFilePath,
         },
       ],

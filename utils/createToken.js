@@ -11,7 +11,7 @@ const createToken = () => {
   const payload = {
     uid: passkitApiKey,
     iat: Math.floor(new Date() / 1000) - 30,
-    exp: Math.floor(new Date() / 1000) + 3 * 60 * 60,
+    exp: Math.floor(new Date() / 1000) + 5 * 60 * 60,
   };
 
   const base64UrlEncode = (obj) =>

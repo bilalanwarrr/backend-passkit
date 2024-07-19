@@ -5,6 +5,7 @@ const axios = require("axios");
 const listUrl = config.passkitApiUrl + "coupon/singleUse/campaigns/list";
 const createUrl = config.passkitApiUrl + "coupon/singleUse/campaign";
 const deleteUrl = config.passkitApiUrl + "coupon/singleUse/campaign";
+const getUrl = config.passkitApiUrl + "coupon/singleUse/campaign";
 const JSONStream = require("JSONStream");
 const through2 = require("through2");
 
@@ -28,7 +29,6 @@ async function getListOfCampaigns(req, res) {
       },
       responseType: "stream",
     });
-
 
     let campaigns = {};
 
@@ -120,8 +120,27 @@ async function deleteCampaigns(req, res) {
   }
 }
 
+async function getCampaignName(campaignId) {
+  try {
+    const token = createToken();
+    const response = await axios({
+      method: "get",
+      url: getUrl + "/" + campaignId,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    return response.data.name;
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
   getListOfCampaigns,
   createCampaign,
   deleteCampaigns,
+  getCampaignName,
 };
